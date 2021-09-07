@@ -281,7 +281,7 @@ class Shot(
     if (folder.exists()) {
       val filesInScreenshotFolder = folder.listFiles
       val metadataFiles = filesInScreenshotFolder.filter(file =>
-        file.getAbsolutePath.contains(Config.metadataFileName(flavor, buildType))
+        file.getAbsolutePath.replace('\\', '/').contains(Config.metadataFileName(flavor, buildType))
       )
       val screenshotSuite = metadataFiles.flatMap { metadataFilePath =>
         val metadataFileContent =

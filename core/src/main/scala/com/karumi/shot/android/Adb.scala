@@ -95,10 +95,10 @@ class Adb(
   }
 
   private def executeAdbCommand(command: String): Int =
-    s"${adbPath} $command" ! logger
+    s"${adbPath} $command".stripSuffix("\\") ! logger
 
   private def executeAdbCommandWithResult(command: String): String =
-    s"${adbPath} $command" !! logger
+    s"${adbPath} $command".stripSuffix("\\") !! logger
 
   private def isCarriageReturnASCII(device: String): Boolean =
     device.charAt(0) == CR_ASCII_DECIMAL
